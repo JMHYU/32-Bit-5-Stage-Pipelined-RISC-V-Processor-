@@ -2,6 +2,46 @@
 Implemented a 32-bit 5-stage RISC-V processor with branch predictor using Verilog. Optimized the Fibonacci algorithm in Assembly Language and demonstrated its performance on FPGA
 
 ## Algorithm (in Assembly language)
+- Basic Fibonacci Algorithm (Recursive Fibonacci)
+```asm
+       lw x10, 0(x9)
+       addi x2, x0, 1024
+       slli x2, x2, 2
+       addi x8, x0, 240
+       addi x1, x0, 240
+################################################
+fib:   beq x10, x0, done
+       addi x6, x0, 1
+       beq x10, x6, done
+       addi x2, x2, -8
+       sw x1, 0(x2)
+       sw x10, 4(x2)
+       addi x10, x10, -1
+       jal x1, fib
+       lw x5, 4(x2)
+       sw x10, 4(x2)
+       addi x10, x5, -2
+       jal x1, fib
+       nop
+       lw x5, 4(x2)
+       add x10, x10, x5
+       lw x1, 0(x2)
+       addi x2, x2, 8
+done:  beq x1, x8, exit1
+       jalr x0, x1, 0
+################################################
+exit1: addi x30, x0, 8
+       sw x10, 0(x30)
+       addi x31, x0, 400
+       mv x30, x31       
+exit3: j exit0
+exit0: j exit3
+```
+> Computational Complexity: O(2^n), Memory requirement: O(n)
+> Recursive, unnecessary memory access instead of using registers (Idle registers)
+
+<br/>
+- Optimized Algorithm (Dynamic Programming Bottom-Up)
 ```asm
        lw x10, 0(x9)
        addi x28, x0, 2 		// n < 2 인 경우 비교를 위한 2
@@ -25,3 +65,6 @@ exit1: addi x30, x0, 8
 exit0: j exit3
 exit3: j exit0
 ```
+> Computational Complexity: O(n), Memory requirement: O(1)
+> 
+
