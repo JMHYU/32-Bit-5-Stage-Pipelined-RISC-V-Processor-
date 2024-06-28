@@ -30,6 +30,7 @@ fib:   beq x10, x0, done
 done:  beq x1, x8, exit1
        jalr x0, x1, 0
 ################################################
+
 exit1: addi x30, x0, 8
        sw x10, 0(x30)
        addi x31, x0, 400
