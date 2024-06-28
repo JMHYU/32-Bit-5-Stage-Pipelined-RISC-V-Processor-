@@ -48,11 +48,11 @@ exit0: j exit3
 This code is in src/darksocv.rom.mem
 - Key register profile
 F(k) = F(k-1) + F(k-2)
-> x10: F(k) return value
-> x11: k
-> x6: F(k-1)
-> x5: F(k-2)
-> x7: n
+> x10: F(k) return value <br/>
+> x11: k <br/>
+> x6: F(k-1) <br/>
+> x5: F(k-2) <br/>
+> x7: n <br/>
 
 ```assembly
        lw x10, 0(x9)
