@@ -37,12 +37,12 @@ exit1: addi x30, x0, 8
 exit3: j exit0
 exit0: j exit3
 ```
-> Computational Complexity: O(2^n), Memory requirement: O(n)
+> Computational Complexity: O(2^n), Memory requirement: O(n) <br/>
 > Recursive, unnecessary memory access instead of using registers (Idle registers)
 
 <br/>
 - Optimized Algorithm (Dynamic Programming Bottom-Up)
-```asm
+```assembly
        lw x10, 0(x9)
        addi x28, x0, 2 		// n < 2 인 경우 비교를 위한 2
        addi x5, x0, 0		// x5 의 초기값은 F(0) = 0으로 지정
