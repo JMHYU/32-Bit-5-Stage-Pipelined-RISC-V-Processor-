@@ -46,8 +46,10 @@ exit0: j exit3
 - Optimized Algorithm (Dynamic Programming Bottom-Up)
 
 This code is in src/darksocv.rom.mem
-- Key register profile
-F(k) = F(k-1) + F(k-2)
+F(n) = ? <br/>
+Repeat F(k) = F(k-1) + F(k-2) <br/>
+
+- Key register profile <br/>
 > x10: F(k) return value <br/>
 > x11: k <br/>
 > x6: F(k-1) <br/>
