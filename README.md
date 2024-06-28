@@ -2,7 +2,7 @@
 Implemented a 32-bit 5-stage RISC-V processor with branch predictor using Verilog. Optimized the Fibonacci algorithm in Assembly Language and demonstrated its performance on FPGA
 
 ## Algorithm (in Assembly language)
-- Basic Fibonacci Algorithm (Recursive Fibonacci)
+### Basic Fibonacci Algorithm (Recursive Fibonacci)
 ```asm
        lw x10, 0(x9)
        addi x2, x0, 1024
@@ -43,7 +43,7 @@ exit0: j exit3
 
 <br/>
 
-- Optimized Algorithm (Dynamic Programming Bottom-Up)
+### Optimized Algorithm (Dynamic Programming Bottom-Up)
 
 This code is in src/darksocv.rom.mem <br/>
 F(n) = ? <br/>
