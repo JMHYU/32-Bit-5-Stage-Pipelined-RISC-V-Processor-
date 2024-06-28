@@ -39,7 +39,7 @@ exit3: j exit0
 exit0: j exit3
 ```
 > Computational Complexity: O(2^n), Memory requirement: O(n) <br/>
-> Recursive, unnecessary memory access instead of using registers (Idle registers)
+> Recursive, unnecessary memory access(stack) instead of using registers (Idle registers)
 
 <br/>
 
