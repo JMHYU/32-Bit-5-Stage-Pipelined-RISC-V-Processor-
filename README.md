@@ -45,6 +45,7 @@ exit0: j exit3
 
 - Optimized Algorithm (Dynamic Programming Bottom-Up)
 
+This code is in src/darksocv.rom.mem
 ```assembly
        lw x10, 0(x9)
        addi x28, x0, 2 		// n < 2 인 경우 비교를 위한 2
