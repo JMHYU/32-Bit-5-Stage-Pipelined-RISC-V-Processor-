@@ -41,7 +41,9 @@ exit0: j exit3
 > Recursive, unnecessary memory access instead of using registers (Idle registers)
 
 <br/>
+
 - Optimized Algorithm (Dynamic Programming Bottom-Up)
+
 ```assembly
        lw x10, 0(x9)
        addi x28, x0, 2 		// n < 2 인 경우 비교를 위한 2
@@ -65,6 +67,7 @@ exit1: addi x30, x0, 8
 exit0: j exit3
 exit3: j exit0
 ```
+
 > Computational Complexity: O(n), Memory requirement: O(1)
 > 
 
