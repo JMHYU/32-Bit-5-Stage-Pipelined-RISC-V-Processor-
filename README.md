@@ -2,7 +2,7 @@
 Implemented a 32-bit 5-stage RISC-V processor with branch predictor using Verilog. Optimized the Fibonacci algorithm in Assembly Language and demonstrated its performance on FPGA
 
 ## Algorithm (in Assembly language)
-```
+```markdown
        lw x10, 0(x9)
        addi x28, x0, 2 		// n < 2 인 경우 비교를 위한 2
        addi x5, x0, 0		// x5 의 초기값은 F(0) = 0으로 지정
