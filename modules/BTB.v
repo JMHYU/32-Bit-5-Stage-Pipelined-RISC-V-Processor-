@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2023/06/07 13:19:04
-// Design Name: 
-// Module Name: WB
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module BTB(
 	input 		  i_clk, i_rst,
@@ -50,23 +30,23 @@ module BTB(
 	
 	assign IND_tag    = MAP[IND_PC_in>>2];
 	assign IF_tag 	  = MAP[IF_PC_in>>2];
-	assign new_branch = (ind_Ctl_branch_in) && (IND_tag[4] == 1'b0); // branchÀÎµ¥, ¾ÆÁ÷ ±â·ÏÀÌ ¾È µÈ °ÍÀÏ °æ¿ì
+	assign new_branch = (ind_Ctl_branch_in) && (IND_tag[4] == 1'b0); // branchì¸ë°, ì•„ì§ ê¸°ë¡ì´ ì•ˆ ëœ ê²ƒì¼ ê²½ìš°
 	assign IND_info   = (IND_tag[4]) ? BTB[IND_tag[3:0]] : 33'b0;	
 	assign IF_info    = (IF_tag[4])  ? BTB[IF_tag[3:0]]  : 33'b0;
 
-	assign {predict, target} = IF_tag[4] ? IF_info : 0; // MAPPINGÀÌ µÇ¾î ÀÖ´Â ¸í·É¾î¸¸ Á¦´ë·Î ³»º¸³½´Ù.
+	assign {predict, target} = IF_tag[4] ? IF_info : 0; // MAPPINGì´ ë˜ì–´ ìžˆëŠ” ëª…ë ¹ì–´ë§Œ ì œëŒ€ë¡œ ë‚´ë³´ë‚¸ë‹¤.
 	wire [31:0] target_test = target >> 2;
 	
 	// count logic(= BTB index)
 	always @(posedge i_clk) begin
 		if(i_rst)
 			count <= 0;
-		else if( (!hz_stall) && new_branch ) // stallÀÌ ¹ß»ýÇÏ¸é, PC reg, IF/ID reg ¸ðµÎ Á¤Áö.
+		else if( (!hz_stall) && new_branch ) // stallì´ ë°œìƒí•˜ë©´, PC reg, IF/ID reg ëª¨ë‘ ì •ì§€.
 			count <= count + 1'b1;
 	end
 	
 
-	// prediction FSM »ý¼º
+	// prediction FSM ìƒì„±
 	reg  [1 :0] next_state;
 	wire [1 :0] state;
 	wire [31:0] s_target;
@@ -92,7 +72,7 @@ module BTB(
 	assign IND_PC_PASS = {PCSrc, PCimm_in};
 	
 	
-	// MAP BRAM »ý¼º
+	// MAP BRAM ìƒì„±
 	always @(posedge i_clk) begin
 		if(!hz_stall && new_branch)
 			MAP[(IND_PC_in >> 2)] <= {1'b1, count}; 
@@ -107,7 +87,7 @@ module BTB(
         $readmemh("BTBMAP.mem", MAP);
     end
 	
-	// BTB BRAM »ý¼º
+	// BTB BRAM ìƒì„±
 	always @(posedge i_clk) begin
 		if(!hz_stall && new_branch)
 			BTB[count] <= {PCSrc, 1'b0, PCimm_in};
