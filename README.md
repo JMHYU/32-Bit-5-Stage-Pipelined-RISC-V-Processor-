@@ -4,9 +4,9 @@ Implemented a 32-bit 5-stage RISC-V processor with branch predictor using Verilo
 ![image](https://github.com/JMHYU/32-Bit-5-Stage-Pipelined-RISC-V-Processor-/assets/165994759/a68d0767-f77c-4507-9b67-c5909f8e840d)
 
 Image reference: Patterson, D. A., & Hennessy, J. L. (n.d.). Computer Organization and Design RISC-V Edition. Morgan Kaufmann.
-<br/><br/>
+<br/>
 - I also added a 2-bit branch predictor to this datapath (BTB.v).
-
+<br/>
 ## Algorithm (in Assembly language)
 ### Basic Fibonacci Algorithm (Recursive Fibonacci)
 ```asm
