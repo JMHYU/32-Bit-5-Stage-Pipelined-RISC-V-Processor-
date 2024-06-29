@@ -7,8 +7,11 @@ Image reference: Patterson, D. A., & Hennessy, J. L. (n.d.). Computer Organizati
 <br/>
 - I also added a 2-bit branch predictor to this datapath (BTB.v).
 <br/>
+
 ## Algorithm (in Assembly language)
+
 ### Basic Fibonacci Algorithm (Recursive Fibonacci)
+
 ```asm
        lw x10, 0(x9)
        addi x2, x0, 1024
