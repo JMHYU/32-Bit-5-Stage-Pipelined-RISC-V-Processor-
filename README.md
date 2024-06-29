@@ -65,19 +65,19 @@ Repeat F(k) = F(k-1) + F(k-2) <br/>
 > x7: n <br/>
 
 ```assembly
-       lw x10, 0(x9)
-       addi x28, x0, 2 		// n < 2 인 경우 비교를 위한 2
-       addi x5, x0, 0		// x5 의 초기값은 F(0) = 0으로 지정
-       addi x6, x0, 1		// x6 의 초기값은 F(1) = 1로 지정
+       lw x10, 0(x9)               // load the value n (from src/darksocv.ram.mem) to x10
+       addi x28, x0, 2 		// keep the value 2 to compare if n < 2
+       addi x5, x0, 0		// the initial value of x5 is F(0) = 0
+       addi x6, x0, 1		// the initial value of x6 is F(1) = 1
        addi x11, x0, 1		// k = 1 -> Fibonacci 수열의 인덱싱을 위한 k값
-       addi x7, x10, 0		// x7에 n값 저장해 둠. -> k값과 비교해서 루프 탈출.
-       blt x10, x28, exit1	// n < 2 인 경우 종료
+       addi x7, x10, 0		// save the value n at x7 -> will compare this with k to escape the loop
+       blt x10, x28, exit1	       // if n < 2 , then exit
 
-fib:   addi x11, x11, 1		// k += 1 -> k를 증가시켜가며 F(k) 값 구하기
+fib:   addi x11, x11, 1		// k += 1 -> return F(k) while increasing k
        add x10, x5, x6		// F(k) = F(k-1) + F(k-2)
        addi x5, x6, 0		// F(k-2) <= F(k-1)
        addi x6, x10, 0		// F(k-1) <= F(k)
-       bne x11, x7, fib		// k = n 이면 루프 탈출
+       bne x11, x7, fib		// if k = n, then exit / otherwise, fib loop
 
 exit1: addi x30, x0, 8
        sw x10, 0(x30)
