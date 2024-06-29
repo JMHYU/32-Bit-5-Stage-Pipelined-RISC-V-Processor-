@@ -7,6 +7,31 @@ Implemented a 32-bit 5-stage RISC-V processor with branch predictor using Verilo
 - I also added a 2-bit branch predictor to this datapath (BTB.v).
 <br/>
 
+## Performance (Fibonacci number calculation task)
+- Baseline version (without any improvement, basic 5-stage pipelined RISC-V processor)
+
+![original](https://github.com/JMHYU/32-Bit-5-Stage-Pipelined-RISC-V-Processor-/assets/165994759/1115090c-3452-4a19-af99-70b4be8fadca)
+
+> Calculation Result: F(25) = 0x12511 = 75025 (correct!)
+> Number of cycles: 0x48ad76 = 4762998 cycles
+
+- After Alogorithm optimization (avoiding recursive algorithm, directly compute fibonacci number using dynamic programming method)
+
+![optim](https://github.com/JMHYU/32-Bit-5-Stage-Pipelined-RISC-V-Processor-/assets/165994759/7bc87a76-48a1-45bb-8eb2-1353beb01b86)
+
+> Calculation Result: F(25) = 0x12511 = 75025 (correct!)
+> Number of cycles: 0xbf = 191 cycles
+
+- 2-bit Branch Predictor + Optimized Algorithm
+
+![predictor](https://github.com/JMHYU/32-Bit-5-Stage-Pipelined-RISC-V-Processor-/assets/165994759/f716d703-0516-4688-9706-00024208d5b9)
+
+> Calculation Result: F(25) = 0x12511 = 75025 (correct!)
+> Number of cycles: 0xaa = 170 cycles
+> Since the Fibonacci algorithm runs in a loop, the branch predictor worked efficiently by predicting the loop's branch outcomes, thereby optimizing the execution flow.
+
+
+
 ## Algorithm (in Assembly language)
 
 ### Basic Fibonacci Algorithm (Recursive Fibonacci)
