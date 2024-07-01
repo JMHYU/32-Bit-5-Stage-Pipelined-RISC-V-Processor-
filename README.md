@@ -78,7 +78,7 @@ exit0: j exit3
 
 ### Optimized Algorithm (Dynamic Programming Bottom-Up)
 
-This algorithm is exactly how we compute fibonacci numbers (we don't normally compute recursively). The code is in src/darksocv.rom.mem in binary code <br/>
+This algorithm is exactly how we (human) compute fibonacci numbers (we don't normally compute recursively). The code is in src/darksocv.rom.mem in binary code <br/>
 F(n) = ? <br/>
 Repeat F(k) = F(k-1) + F(k-2) <br/>
 
